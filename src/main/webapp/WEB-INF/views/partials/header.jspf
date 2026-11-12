@@ -1,0 +1,9 @@
+<%@ page import="com.codequest.util.WebUtil" %>
+<% String ctx = request.getContextPath(); %>
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>CodeQuest</title><link rel="stylesheet" href="<%=ctx%>/css/style.css"></head><body>
+<header class="topbar"><div class="container top-inner"><a class="brand" href="<%=ctx%>/"><span class="mark">&lt;/&gt;</span>Code<em>Quest</em></a>
+<nav class="navlinks"><a href="<%=ctx%>/missions">Missions</a><a href="<%=ctx%>/leaderboard">Leaderboard</a>
+<% if(session.getAttribute("userId") != null) { %><a href="<%=ctx%>/dashboard">My Dashboard</a><% } else if(session.getAttribute("adminId") != null) { %><a href="<%=ctx%>/admin">Admin Dashboard</a><% } else { %><a href="<%=ctx%>/login">Student Login</a><a href="<%=ctx%>/admin-login">Admin Login</a><% } %>
+<% if(session.getAttribute("userId") != null || session.getAttribute("adminId") != null) { %>
+<form method="post" action="<%=ctx%><%=session.getAttribute("adminId") != null ? "/admin-logout" : "/logout"%>"><input type="hidden" name="csrf" value="<%=WebUtil.escape(WebUtil.token(request))%>"><button type="submit">Logout</button></form>
+<% } else { %><a class="btn small" href="<%=ctx%>/register">Join Now</a><% } %></nav></div></header>

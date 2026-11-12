@@ -1,0 +1,6 @@
+/target/
+/.settings/
+/.project
+/.classpath
+/src/main/resources/database.properties
+*.log

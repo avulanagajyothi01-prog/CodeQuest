@@ -1,0 +1,3 @@
+Screenshots show expected visual styling and representative sample data.
+They are static design previews, not evidence that the Java/MySQL application was run on Tomcat.
+The actual pages read data from MySQL after you deploy them in Eclipse.

@@ -1,0 +1,5 @@
+<%@ page contentType="text/html;charset=UTF-8" %><%@ include file="partials/header.jspf" %>
+<main class="container"><div class="auth-wrap"><div class="auth"><span class="eyebrow">ADMINISTRATOR ACCESS</span><h1>Admin Login</h1><p>Manage programming missions and student challenges.</p><% if("1".equals(request.getParameter("created"))) { %><div class="message success">Administrator account created. Sign in below.</div><% } %><%@ include file="partials/message.jspf" %>
+<form method="post" action="<%=ctx%>/admin-login"><input type="hidden" name="csrf" value="<%=WebUtil.escape(WebUtil.token(request))%>">
+<label>Admin username</label><input name="username" required autocomplete="username"><label>Password</label><input type="password" name="password" required autocomplete="current-password"><button class="btn full" type="submit">Open Admin Dashboard &rarr;</button></form>
+<p>First-time setup: open <code><%=ctx%>/setup-admin</code> on localhost.</p></div></div></main><%@ include file="partials/footer.jspf" %>

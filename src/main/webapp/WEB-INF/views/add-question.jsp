@@ -1,0 +1,9 @@
+<%@ page contentType="text/html;charset=UTF-8" %><%@ include file="partials/header.jspf" %>
+<main class="container"><div class="pagehead"><span class="eyebrow">ADMIN / QUESTION CREATION</span><h1>Create a Mission</h1><p>Add a new programming challenge for students.</p></div><%@ include file="partials/message.jspf" %>
+<div class="panel"><form method="post" action="<%=ctx%>/admin/questions/new"><input type="hidden" name="csrf" value="<%=WebUtil.escape(WebUtil.token(request))%>">
+<label>Mission title</label><input name="title" maxlength="200" required value="<%=WebUtil.escape(request.getParameter("title"))%>">
+<label>Question description</label><textarea name="description" required><%=WebUtil.escape(request.getParameter("description"))%></textarea>
+<div class="field-row"><div><label>Category</label><select name="category"><option>Java</option><option>SQL</option><option>DSA</option></select></div><div><label>Difficulty</label><select name="difficulty"><option>Easy</option><option>Medium</option><option>Hard</option></select></div></div>
+<div class="field-row"><div><label>Answer A</label><input name="a" required></div><div><label>Answer B</label><input name="b" required></div><div><label>Answer C</label><input name="c" required></div><div><label>Answer D</label><input name="d" required></div></div>
+<div class="field-row"><div><label>Correct answer</label><select name="correct"><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option></select></div><div><label>XP reward</label><input name="xp" type="number" min="1" max="500" value="50" required></div></div>
+<button class="btn" type="submit" style="margin-top:23px">Save Mission</button> <a class="btn ghost" href="<%=ctx%>/admin/questions">Cancel</a></form></div></main><%@ include file="partials/footer.jspf" %>
